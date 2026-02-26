@@ -1,12 +1,12 @@
 html, body {
   color:whitesmoke;
   font-family: "Helvetica";
-  background: salmon;
+  background: darkseagreen;
   font-size:12px;
 }
 
 button {
-  background:dodgerblue;
+  background:powderblue;
   color: whitesmoke;
   border-radius:30px;
   border-width:1px;
