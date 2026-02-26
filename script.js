@@ -23,30 +23,18 @@ oscillator.type = "square";
 oscillator.frequency.setValueAtTime(freq, audioCtx.currentTime); // value in hertz
 oscillator.connect(audioCtx.destination);
 oscillator.start();
-//idiosyncratic glitch.me thing
-audioCtx.suspend();
 
 function sonify(){
   console.log(locationField.value);
-  const options = {
-	method: 'GET',
-	headers: {
-		'X-RapidAPI-Key': '29d811170cmsh9fab021f6b05ac9p19ce94jsn32bd2c989e1b',
-		'X-RapidAPI-Host': 'visual-crossing-weather.p.rapidapi.com'
-	}
-};
 
-fetch('https://visual-crossing-weather.p.rapidapi.com/forecast?aggregateHours=24&location='+locationField.value +'&contentType=json&unitGroup=us&shortColumnNames=0', options)
+fetch('https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/'+locationField.value +'?key=YH5QF5SWJL5LZ8SFPZFT2RCC2')
 	.then(response => response.json())
 	.then(response => {
-    console.log(response);
-    //console.log(response.locations[locationField]);
-    
-    freq = response.locations[locationField.value].values[0].temp + 50; console.log(freq); 
+    freq = response.days[0].temp + 50; console.log(freq - 50); 
     oscillator.frequency.setValueAtTime(freq, audioCtx.currentTime); 
     audioCtx.resume();
-    infoField.innerHTML = "the weather in " + locationField.value + " is " + response.locations[locationField.value].values[0].temp
-    if (response.locations[locationField.value].values[0].temp < 60) {
+    infoField.innerHTML = "the weather in " + locationField.value + " is " + response.days[0].temp
+    if (response.days[0].temp < 60) {
       infoField.innerHTML += " ❄️"
     }
     else {
