@@ -6,6 +6,9 @@ let audioCtx;
 let freq = 0;
 
 let infoField;
+
+let imgElement = document.getElementById("resultImage");
+
 //wait until html document is loaded so that we can access the keyboard input field
 document.addEventListener('DOMContentLoaded', function(event) { 
   //locationField = document.getElementById("location");
@@ -33,15 +36,18 @@ fetch('https://weather.visualcrossing.com/VisualCrossingWebServices/rest/service
     freq = response.days[0].temp + 50; console.log(freq - 50); 
     oscillator.frequency.setValueAtTime(freq, audioCtx.currentTime); 
     audioCtx.resume();
-    infoField.innerHTML = "the weather in " + locationField.value + " is " + response.days[0].temp
+    infoField.innerHTML = "The weather in " + locationField.value + " is " + response.days[0].temp
     if (response.days[0].temp < 60 && response.days[0].temp > 40) {
       infoField.innerHTML += " ☁️"
+      imgElement.src = "images/cloudy.png";
     }
     if (response.days[0].temp < 40) {
       infoField.innerHTML += " ❄️"
+      imgElement.src = "images/snowy.png";
     }
     else {
       infoField.innerHTML += " 🌤️"
+      imgElement.src = "images/sunny.png";
     }
   })
 	.catch(err => console.error(err));
