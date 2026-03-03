@@ -19,7 +19,7 @@ audioCtx = new (window.AudioContext || window.webkitAudioContext)();
 // create Oscillator node
 const oscillator = audioCtx.createOscillator();
 
-oscillator.type = "square";
+oscillator.type = "triangle"; 
 oscillator.frequency.setValueAtTime(freq, audioCtx.currentTime); // value in hertz
 oscillator.connect(audioCtx.destination);
 oscillator.start();
