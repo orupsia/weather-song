@@ -39,15 +39,15 @@ fetch('https://weather.visualcrossing.com/VisualCrossingWebServices/rest/service
     infoField.innerHTML = "The weather in " + locationField.value + " is " + response.days[0].temp
     if (response.days[0].temp < 60 && response.days[0].temp > 40) {
       infoField.innerHTML += " ☁️"
-      imgElement.src = "images/cloudy.png";
+      imgElement.src = "images/cloud.jpg";
     }
     if (response.days[0].temp < 40) {
       infoField.innerHTML += " ❄️"
-      imgElement.src = "images/snowy.png";
+      imgElement.src = "images/snow.jpg";
     }
     else {
       infoField.innerHTML += " 🌤️"
-      imgElement.src = "images/sunny.png";
+      imgElement.src = "images/sun.jpg";
     }
   })
 	.catch(err => console.error(err));
