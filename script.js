@@ -37,18 +37,18 @@ fetch('https://weather.visualcrossing.com/VisualCrossingWebServices/rest/service
     oscillator.frequency.setValueAtTime(freq, audioCtx.currentTime); 
     audioCtx.resume();
     infoField.innerHTML = "The weather in " + locationField.value + " is " + response.days[0].temp
-    if (response.days[0].temp < 60 && response.days[0].temp > 40) {
-      infoField.innerHTML += " ☁️"
-      imgElement.src = "images/catcloud.jpg";
-    }
     if (response.days[0].temp < 40) {
-      infoField.innerHTML += " ❄️"
-      imgElement.src = "images/snow.jpg";
-    }
-    else {
-      infoField.innerHTML += " 🌤️"
-      imgElement.src = "images/suncat.jpg";
-    }
+  infoField.innerHTML += " ❄️";
+  imgElement.src = "images/snow.jpg";
+}
+else if (response.days[0].temp < 60) {
+  infoField.innerHTML += " ☁️";
+  imgElement.src = "images/catcloud.jpg";
+}
+else {
+  infoField.innerHTML += " 🌤️";
+  imgElement.src = "images/suncat.jpg";
+}
   })
 	.catch(err => console.error(err));
 }
