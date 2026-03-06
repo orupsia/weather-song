@@ -48,6 +48,7 @@ I don't want to talk about how long it took to figure that out. Definitely did a
 After fixing the major errors in my code, I just messed around getting things to look a little nicer, a little more Relena.
 
 <img width="200" height="180" alt="Screenshot 2026-03-06 at 12 21 34 PM" src="https://github.com/user-attachments/assets/edb85a27-2f83-4c67-a39c-361c761d1444"/>
+
 cat 
 
 This website was made using Visual Crossing Weather API from RapidAPI. 
